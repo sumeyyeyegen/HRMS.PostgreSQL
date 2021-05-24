@@ -1,1 +1,1 @@
-# HRMS.PostgreSQL
+# HRMS (Human Resource Management System)
