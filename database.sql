@@ -10,6 +10,7 @@ CREATE TABLE public.candidates
     last_name character varying(20) NOT NULL,
     identity_number character varying(11) NOT NULL,
     birth_year integer NOT NULL,
+    user_id integer,
     PRIMARY KEY (id)
 );
 
@@ -34,6 +35,7 @@ CREATE TABLE public.employees
     id integer NOT NULL,
     first_name character varying(35) NOT NULL,
     last_name character varying(35) NOT NULL,
+    user_id integer,
     PRIMARY KEY (id)
 );
 
@@ -50,6 +52,8 @@ CREATE TABLE public.jobs
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     title character varying(255) NOT NULL,
+    name character varying(100) NOT NULL,
+    user_id integer,
     PRIMARY KEY (id)
 );
 
@@ -109,6 +113,12 @@ ALTER TABLE public.employee_confirms
 
 
 ALTER TABLE public.employees
+    ADD FOREIGN KEY (user_id)
+    REFERENCES public.users (id)
+    NOT VALID;
+
+
+ALTER TABLE public.employees
     ADD FOREIGN KEY (id)
     REFERENCES public.users (id)
     NOT VALID;
@@ -116,6 +126,12 @@ ALTER TABLE public.employees
 
 ALTER TABLE public.employers
     ADD FOREIGN KEY (id)
+    REFERENCES public.users (id)
+    NOT VALID;
+
+
+ALTER TABLE public.jobs
+    ADD FOREIGN KEY (user_id)
     REFERENCES public.users (id)
     NOT VALID;
 
