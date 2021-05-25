@@ -30,15 +30,6 @@ CREATE TABLE public.employee_confirms
     PRIMARY KEY (id)
 );
 
-CREATE TABLE public.employeers
-(
-    id integer NOT NULL,
-    admin_verify boolean NOT NULL,
-    company_name character varying(100) NOT NULL,
-    web_site character varying(100) NOT NULL,
-    PRIMARY KEY (id)
-);
-
 CREATE TABLE public.employees
 (
     id integer NOT NULL,
